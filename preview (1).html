@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tanzania Connect</title>
+
+  <!-- GOOGLE FONT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- FONT AWESOME -->
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins', sans-serif;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#f4fdf7;
+      color:#222;
+      overflow-x:hidden;
+    }
+
+    img{
+      max-width:100%;
+    }
+
+    .container{
+      width:90%;
+      max-width:1200px;
+      margin:auto;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      width:100%;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:1000;
+      background:rgba(0,0,0,0.7);
+      backdrop-filter:blur(10px);
+    }
+
+    .nav-container{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 0;
+    }
+
+    .logo{
+      color:#00ff88;
+      font-size:28px;
+      font-weight:700;
+    }
+
+    nav ul{
+      display:flex;
+      gap:25px;
+      list-style:none;
+    }
+
+    nav ul li a{
+      color:white;
+      text-decoration:none;
+      transition:0.3s;
+      font-weight:500;
+    }
+
+    nav ul li a:hover{
+      color:#00ff88;
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      background:
+      linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+      url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=1600');
+      background-size:cover;
+      background-position:center;
+      color:white;
+      text-align:center;
+      padding:100px 20px;
+    }
+
+    .hero-content{
+      max-width:900px;
+      margin:auto;
+    }
+
+    .hero h1{
+      font-size:70px;
+      margin-bottom:20px;
+      color:#00ff88;
+      line-height:1.1;
+    }
+
+    .hero p{
+      font-size:24px;
+      margin-bottom:30px;
+      line-height:1.7;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:16px 40px;
+      background:linear-gradient(45deg,#00ff88,#00b894);
+      color:white;
+      text-decoration:none;
+      border-radius:50px;
+      font-weight:600;
+      transition:0.4s;
+      box-shadow:0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .btn:hover{
+      transform:translateY(-5px);
+    }
+
+    /* SECTION */
+
+    section{
+      padding:100px 0;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      font-size:45px;
+      color:#009e60;
+      margin-bottom:15px;
+    }
+
+    .section-title p{
+      max-width:700px;
+      margin:auto;
+      color:#555;
+      font-size:18px;
+    }
+
+    /* CARDS */
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:white;
+      padding:35px;
+      border-radius:20px;
+      transition:0.4s;
+      box-shadow:0 10px 30px rgba(0,0,0,0.08);
+      border-top:5px solid #00b894;
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+    }
+
+    .card i{
+      font-size:45px;
+      color:#00b894;
+      margin-bottom:20px;
+    }
+
+    .card h3{
+      margin-bottom:15px;
+      color:#222;
+    }
+
+    /* PROBLEM */
+
+    .problem{
+      background:#fff;
+    }
+
+    .problem-list{
+      max-width:800px;
+      margin:auto;
+    }
+
+    .problem-item{
+      background:white;
+      margin-bottom:20px;
+      padding:25px;
+      border-left:6px solid red;
+      border-radius:10px;
+      box-shadow:0 5px 15px rgba(0,0,0,0.05);
+      font-size:18px;
+    }
+
+    /* IMPACT */
+
+    .impact{
+      background:linear-gradient(135deg,#00b894,#009e60);
+      color:white;
+    }
+
+    .impact .section-title h2,
+    .impact .section-title p{
+      color:white;
+    }
+
+    /* FUNDING */
+
+    .funding-box{
+      background:white;
+      padding:50px;
+      border-radius:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .funding-goal{
+      text-align:center;
+      margin-bottom:40px;
+    }
+
+    .funding-goal h3{
+      font-size:55px;
+      color:#00b894;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+    }
+
+    table th,
+    table td{
+      padding:18px;
+      border-bottom:1px solid #ddd;
+      text-align:left;
+    }
+
+    table th{
+      background:#00b894;
+      color:white;
+    }
+
+    /* DONATE SECTION */
+
+    .donate-section{
+      background:linear-gradient(135deg,#f5fff8,#e9fff2);
+    }
+
+    .donate-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+      margin-top:50px;
+    }
+
+    .donate-card{
+      background:white;
+      border-radius:25px;
+      padding:40px 30px;
+      text-align:center;
+      box-shadow:0 10px 30px rgba(0,0,0,0.08);
+      transition:0.4s;
+      border-top:6px solid #00b894;
+    }
+
+    .donate-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .donate-icon{
+      width:90px;
+      height:90px;
+      margin:auto;
+      border-radius:50%;
+      background:linear-gradient(45deg,#00ff88,#00b894);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      margin-bottom:25px;
+    }
+
+    .donate-icon i{
+      font-size:40px;
+      color:white;
+    }
+
+    .donate-card h3{
+      margin-bottom:20px;
+      color:#00b894;
+      font-size:28px;
+    }
+
+    .donate-number,
+    .donate-email{
+      font-size:22px;
+      font-weight:600;
+      margin-bottom:10px;
+      color:#222;
+      word-break:break-word;
+    }
+
+    .donate-name{
+      color:#666;
+      margin-bottom:25px;
+    }
+
+    .copy-btn,
+    .paypal-btn{
+      display:inline-block;
+      padding:14px 28px;
+      border:none;
+      border-radius:50px;
+      background:linear-gradient(45deg,#00ff88,#00b894);
+      color:white;
+      font-weight:600;
+      text-decoration:none;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .copy-btn:hover,
+    .paypal-btn:hover{
+      transform:scale(1.05);
+    }
+
+    /* FOUNDER */
+
+    .founder{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:50px;
+      align-items:center;
+    }
+
+    .founder img{
+      width:100%;
+      border-radius:25px;
+      box-shadow:0 15px 40px rgba(0,0,0,0.2);
+    }
+
+    .founder-text h2{
+      color:#00b894;
+      margin-bottom:20px;
+      font-size:40px;
+    }
+
+    .founder-text p{
+      margin-bottom:20px;
+      line-height:1.8;
+      color:#555;
+    }
+
+    /* CONTACT */
+
+    .contact{
+      background:#111;
+      color:white;
+      text-align:center;
+    }
+
+    .contact h2{
+      color:#00ff88;
+      margin-bottom:20px;
+      font-size:40px;
+    }
+
+    .contact p{
+      margin-bottom:15px;
+      font-size:18px;
+    }
+
+    .contact i{
+      color:#00ff88;
+      margin-right:10px;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:black;
+      color:white;
+      text-align:center;
+      padding:25px;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:900px){
+
+      .hero h1{
+        font-size:50px;
+      }
+
+      .hero p{
+        font-size:20px;
+      }
+
+      .founder{
+        grid-template-columns:1fr;
+      }
+
+      nav ul{
+        display:none;
+      }
+    }
+
+    @media(max-width:600px){
+
+      .hero h1{
+        font-size:38px;
+      }
+
+      .hero p{
+        font-size:17px;
+      }
+
+      .section-title h2{
+        font-size:32px;
+      }
+
+      .funding-goal h3{
+        font-size:40px;
+      }
+
+      .card,
+      .donate-card{
+        padding:25px;
+      }
+
+      .donate-number,
+      .donate-email{
+        font-size:18px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+    <div class="container nav-container">
+
+      <div class="logo">Tanzania Connect</div>
+
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#impact">Impact</a></li>
+        <li><a href="#funding">Funding</a></li>
+        <li><a href="#donate">Donate</a></li>
+        <li><a href="#founder">Founder</a></li>
+      </ul>
+
+    </div>
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <h1>
+        Empowering Tanzanian Farmers Through AI
+      </h1>
+
+      <p>
+        Tanzania Connect is an AI-powered agricultural platform helping
+        farmers connect with buyers, predict crop prices,
+        and receive weather forecasts in real time.
+      </p>
+
+      <a href="#donate" class="btn">
+        Donate Now
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>About Tanzania Connect</h2>
+
+        <p>
+          Tanzania Connect is building a smarter future for agriculture
+          in Tanzania using Artificial Intelligence and digital technology.
+        </p>
+      </div>
+
+      <div class="grid">
+
+        <div class="card">
+          <i class="fas fa-store"></i>
+          <h3>Marketplace</h3>
+          <p>Farmers connect directly with buyers worldwide.</p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-chart-line"></i>
+          <h3>AI Prediction</h3>
+          <p>AI predicts crop prices and market trends.</p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-cloud-rain"></i>
+          <h3>Weather Forecast</h3>
+          <p>Accurate weather updates for better farming.</p>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-bell"></i>
+          <h3>Notifications</h3>
+          <p>Receive market alerts and buyer requests instantly.</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PROBLEM -->
+
+  <section class="problem">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>The Problem</h2>
+
+        <p>
+          Many farmers still struggle with market access and lack
+          of agricultural information.
+        </p>
+      </div>
+
+      <div class="problem-list">
+
+        <div class="problem-item">
+          Farmers sell crops at low prices due to middlemen.
+        </div>
+
+        <div class="problem-item">
+          Lack of market price information.
+        </div>
+
+        <div class="problem-item">
+          Unexpected weather changes cause huge losses.
+        </div>
+
+        <div class="problem-item">
+          Farmers struggle to reach international buyers.
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- IMPACT -->
+
+  <section class="impact" id="impact">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Project Impact</h2>
+
+        <p>
+          Tanzania Connect will transform agriculture and improve lives.
+        </p>
+      </div>
+
+      <div class="grid">
+
+        <div class="card">
+          <i class="fas fa-money-bill-wave"></i>
+          <h3>Increase Income</h3>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-seedling"></i>
+          <h3>Digital Agriculture</h3>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-globe-africa"></i>
+          <h3>Global Markets</h3>
+        </div>
+
+        <div class="card">
+          <i class="fas fa-users"></i>
+          <h3>Empower Communities</h3>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FUNDING -->
+
+  <section id="funding">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Funding Goal</h2>
+
+        <p>
+          We are raising funds to complete and launch Tanzania Connect.
+        </p>
+      </div>
+
+      <div class="funding-box">
+
+        <div class="funding-goal">
+          <h3>$1000 USD</h3>
+          <p>Support Innovation For Tanzanian Farmers</p>
+        </div>
+
+        <table>
+
+          <tr>
+            <th>Purpose</th>
+            <th>Cost</th>
+          </tr>
+
+          <tr>
+            <td>Platform Development</td>
+            <td>$400</td>
+          </tr>
+
+          <tr>
+            <td>AI Integration</td>
+            <td>$250</td>
+          </tr>
+
+          <tr>
+            <td>Hosting & Server</td>
+            <td>$100</td>
+          </tr>
+
+          <tr>
+            <td>Mobile Optimization</td>
+            <td>$100</td>
+          </tr>
+
+          <tr>
+            <td>Testing & Deployment</td>
+            <td>$100</td>
+          </tr>
+
+          <tr>
+            <td>Marketing & Outreach</td>
+            <td>$50</td>
+          </tr>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- DONATE -->
+
+  <section id="donate" class="donate-section">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Support Tanzania Connect</h2>
+
+        <p>
+          Your support will help empower farmers through technology and AI.
+        </p>
+      </div>
+
+      <div class="donate-grid">
+
+        <!-- MPESA -->
+
+        <div class="donate-card">
+
+          <div class="donate-icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+
+          <h3>M-Pesa</h3>
+
+          <p class="donate-number">
+            +255755019307
+          </p>
+
+          <p class="donate-name">
+            Name: Charles Kenedy
+          </p>
+
+          <button class="copy-btn"
+          onclick="copyText('+255755019307')">
+            Copy Number
+          </button>
+
+        </div>
+
+        <!-- AIRTEL -->
+
+        <div class="donate-card">
+
+          <div class="donate-icon">
+            <i class="fas fa-wallet"></i>
+          </div>
+
+          <h3>Airtel Money</h3>
+
+          <p class="donate-number">
+            +255789611390
+          </p>
+
+          <p class="donate-name">
+            Name: Charles Kenedy
+          </p>
+
+          <button class="copy-btn"
+          onclick="copyText('+255789611390')">
+            Copy Number
+          </button>
+
+        </div>
+
+        <!-- PAYPAL -->
+
+        <div class="donate-card">
+
+          <div class="donate-icon">
+            <i class="fab fa-paypal"></i>
+          </div>
+
+          <h3>PayPal</h3>
+
+          <p class="donate-email">
+            lesnedycharles@gmail.com
+          </p>
+
+          <a href="https://www.paypal.com/"
+          target="_blank"
+          class="paypal-btn">
+            Donate With PayPal
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOUNDER -->
+
+  <section id="founder">
+
+    <div class="container">
+
+      <div class="founder">
+
+        <img src="your-photo.jpg" alt="Charles Kenedy">
+
+        <div class="founder-text">
+
+          <h2>Charles Kenedy</h2>
+
+          <p>
+            Founder of Lesnedy Solution based in Mbeya, Tanzania.
+          </p>
+
+          <p>
+            Passionate about using Artificial Intelligence and technology
+            to improve agriculture and empower farmers.
+          </p>
+
+          <p>
+            Tanzania Connect is a mission to create smarter agriculture
+            and stronger communities.
+          </p>
+
+          <a href="#donate" class="btn">
+            Support The Mission
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section class="contact">
+
+    <div class="container">
+
+      <h2>Contact Information</h2>
+
+      <p>
+        <i class="fas fa-envelope"></i>
+        kenedycharles49@gmail.com
+      </p>
+
+      <p>
+        <i class="fas fa-phone"></i>
+        +255755019307
+      </p>
+
+      <p>
+        <i class="fas fa-location-dot"></i>
+        Mbeya, Tanzania
+      </p>
+
+      <br>
+
+      <a href="mailto:kenedycharles49@gmail.com" class="btn">
+        Contact Me
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    Tanzania Connect © 2026 | Technology For Farmers
+  </footer>
+
+  <!-- SCRIPT -->
+
+  <script>
+
+    function copyText(text){
+
+      navigator.clipboard.writeText(text);
+
+      alert("Copied: " + text);
+
+    }
+
+  </script>
+
+</body>
+</html>
